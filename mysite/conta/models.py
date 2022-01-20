@@ -9,14 +9,13 @@ class Orcamento(models.Model):
                     max_length = 8, 
                     choices = ( ( 'Receita','Receita' ), ( 'Despesa','Despesa' ) ),
                     default = 'Despesa',
-                    help_text = 'Tipo de orcamento: Receita ou Despesa'
                     )
     def __str__(self):
         return self.nome
 
   
 class Categoria(models.Model):
-    nome = models.CharField( max_length = 200, unique = True, help_text = 'Nome da categoria do orçamento' )
-    descricao = models.TextField( help_text = 'Descrição da categoria do orçamento')
+    nome = models.CharField( max_length = 200, unique = True)
+    descricao = models.TextField()
     def __str__(self):
         return self.nome

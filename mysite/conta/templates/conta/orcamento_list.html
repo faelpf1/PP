@@ -1,0 +1,17 @@
+{% extends "conta/base.html" %}
+
+{% block title %}Orçamento{% endblock %}
+
+{% block content %}
+    {% for orcamento in orcamento_list %}
+        <article>
+            <h2>{{ orcamento.nome }}</h2>
+            <p>
+                {{ orcamento.tipo }}<br>
+                R${{ orcamento.valor }}<br>
+                {{ orcamento.data}}<br>
+            </p>
+            {{ orcamento.body|linebreaks }}
+        </article>
+    {% endfor %}
+{% endblock %}
