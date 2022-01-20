@@ -24,5 +24,7 @@ Os métodos serão adicionados abaixo conforme necessidade.
 
 ## Comandos Realizados
 **cria ambiente virtual** python -m venv pypp 
+
 **Instala o Django** python -m pip install Django
+
 **Instala o cliente mysql no Django** pip install django mysqlclient
