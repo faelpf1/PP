@@ -5,6 +5,5 @@
 		}
 	],
 	"settings": {
-		"livePreview.defaultPreviewPath": "/mysite/conta/templates/conta/base.html"
 	}
 }

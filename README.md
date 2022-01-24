@@ -23,8 +23,7 @@ Os métodos serão adicionados abaixo conforme necessidade.
 - [ ] Mecanismo de autenticação.
 
 ## Comandos Realizados
-**cria ambiente virtual** python -m venv pypp 
 
-**Instala o Django** python -m pip install Django
+**Ativa o ambiente virtual** .\venv\Scripts\Activate.ps1 #Ativar ambiente python
 
-**Instala o cliente mysql no Django** pip install django mysqlclient
+**Executa a aplicação** py manage.py runserver [ip]
