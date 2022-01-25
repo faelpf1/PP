@@ -5,7 +5,7 @@ Implementação de um projeto sobre controle de orçamento para disciplina de Pa
 ## Tecnologia utilizada
 1. **Python 3.9.5** Linguagem de programação
 2. **Django 4.0.1** Framework para criação do backend e frontend.
-3. **MariaDB** persistência no banco de dados sql.
+3. **MariaDB 10.6** persistência no banco de dados sql.
 
 **Entidades:** 
 * Orçamento
