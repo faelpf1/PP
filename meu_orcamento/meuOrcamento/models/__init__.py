@@ -7,6 +7,6 @@ PRIVILEGIO = { (1, 'Administrador'), (2, 'Usuário'), }
 TIPO_ORCAMENTO = { (1, 'Receita'), (2, 'Despesa'), }
 
 from .Categoria import Categoria
-from .Orcamento import Orcamento
 from .Perfil import Perfil
+from .Orcamento import Orcamento
 

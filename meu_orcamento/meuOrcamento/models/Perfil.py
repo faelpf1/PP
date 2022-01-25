@@ -7,7 +7,6 @@ class Perfil(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     token = models.CharField(max_length=255, null=True, blank=True)
-    orcamentos = models.ManyToManyField(Orcamento, blank=True, related_name='orcamentos')
     
 
     def __str__(self) -> str:
