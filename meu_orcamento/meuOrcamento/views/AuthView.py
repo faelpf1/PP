@@ -11,12 +11,12 @@ def login_view(request):
         return redirect('/perfil')
 
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+        usuario = request.POST['usuario']
+        senha = request.POST['senha']
         loginForm = LoginForm(request.POST)
 
         if loginForm.is_valid():
-            user = authenticate(username=username, password=password)
+            user = authenticate(username=usuario, password=senha)
             if user is not None:
                 login(request, user)
                 _next = request.GET.get('next')
@@ -53,21 +53,21 @@ def register_view(request):
         return redirect('/')
 
     if request.method == 'POST':
-        username = request.POST['username']
+        usuario = request.POST['usuario']
         email = request.POST['email']
-        password = request.POST['password']
+        senha = request.POST['senha']
         registerForm = RegisterForm(request.POST)
 
         if registerForm.is_valid():
-            verifyUsername = User.objects.filter(username=username).first()
+            verifyUsuario = User.objects.filter(username=usuario).first()
             verifyEmail = User.objects.filter(email=email).first()
 
-            if verifyUsername is not None:
+            if verifyUsuario is not None:
                 message = { 'type': 'danger', 'text': 'Já existe um usuário com este username!' }
             elif verifyEmail is not None:
                 message = { 'type': 'danger', 'text': 'Já existe um usuário com este e-mail!' }
             else:
-                user = User.objects.create_user(username, email, password)
+                user = User.objects.create_user(usuario, email, senha)
                 if user is not None:
                     message = { 'type': 'success', 'text': 'Conta criada com sucesso!' }
                 else:

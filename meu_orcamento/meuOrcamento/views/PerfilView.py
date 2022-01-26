@@ -53,4 +53,4 @@ def editar_perfil(request):
         'message': message
     }
 
-    return render(request, template_name='perfil.html', context=context)
+    return render(request, template_name='editarPerfil.html', context=context)
