@@ -1,3 +1,3 @@
-from .TelaInicialUrls import *
-from .TelaPerfilUrls import *
-from .TelaOrcamentoUrls import *
+from .PerfilUrls import *
+from .OrcamentoUrls import *
+from .AuthUrls import *

@@ -18,9 +18,9 @@ Os métodos serão adicionados abaixo conforme necessidade.
 - [x] Criação do banco de dados com as entidades e seus atributos.
 - [x] Preparação do ambiente python com o Django.
 - [x] Criação de módulos MVC para interação com o banco de dados.
-- [x] Criação de módulos para mostrar os dados necessarios para o usuário.
+- [ ] Criação de módulos para mostrar os dados necessarios para o usuário.
 - [ ] Criação do layout da pagina
-- [ ] Mecanismo de autenticação.
+- [x] Mecanismo de autenticação.
 
 ## Comandos Realizados
 obs: Acesse a pasta meu_orcamento antes.
