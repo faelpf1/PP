@@ -2,5 +2,16 @@
 {% load static %}
 {% block title %}Perfil{% endblock %}
 {% block styles %}<link rel="stylesheet" href="{% static 'css/TelaInicial.css' %}">{% endblock %}
+{% block nav %}
+<li class="nav-item"><a class="nav-link" href={% url 'adicionarOrcamento' %}><i class="fa fa-edit"></i> Adicionar Orçamento</a></li>
+<li class="nav-item"><a class="nav-link" href={% url 'adicionarCategoria' %}><i class="fa fa-edit"></i> Adicionar Categoria</a></li>
+{% endblock %}
 {% block content %}
+<div id="content">
+    <div class="container-fluid">
+        <div class="row">
+        
+        </div>
+    </div>
+</div>
 {% endblock %}

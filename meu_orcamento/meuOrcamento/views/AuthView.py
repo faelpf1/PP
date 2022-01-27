@@ -8,7 +8,7 @@ def login_view(request):
     message = None
 
     if request.user.is_authenticated:
-        return redirect('/perfil')
+        return redirect('/orcamento')
 
     if request.method == 'POST':
         usuario = request.POST['usuario']
@@ -50,7 +50,7 @@ def register_view(request):
     message = None
 
     if request.user.is_authenticated:
-        return redirect('/')
+        return redirect('/orcamento')
 
     if request.method == 'POST':
         usuario = request.POST['usuario']

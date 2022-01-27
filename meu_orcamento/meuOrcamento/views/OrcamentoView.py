@@ -1,6 +1,6 @@
-from django.http import HttpResponse
 from meuOrcamento.models import Orcamento
-from django.shortcuts import render, redirect
+from django.shortcuts import render
+from meuOrcamento.forms.OrcamentoForm import OrcamentoForm
 
 def orcamento_view(request):
     categoria = request.GET.get('categoria')
@@ -17,3 +17,28 @@ def orcamento_view(request):
     }
 
     return render(request, template_name='orcamento.html', context=context)
+
+
+def adicionarOrcamento(request):
+    message = None
+    if request.method == 'POST':
+        orcamento = OrcamentoForm(request.POST)
+        if orcamento.is_valid():
+            orcamento.save()
+            if orcamento is not None:
+                message = { 'type': 'success', 'text': 'Orçamento adicionado com sucesso!' }
+            else:
+                message = { 'type': 'danger',  'text': 'Um erro ocorreu.' }
+            nome = orcamento.cleaned_data['nome']
+            valor = orcamento.cleaned_data['valor']
+
+    context = {
+        'form': OrcamentoForm(),
+        'message': message,
+        'title': 'Adicionar Orçamento',
+        'button_text': 'Adicionar Orçamento',
+        'link_text': 'Voltar',
+        'link_href': '/orcamento'
+    }
+    
+    return render(request, 'adicionarOrcamento.html', context=context)

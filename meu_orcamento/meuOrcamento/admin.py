@@ -2,14 +2,9 @@ from django.contrib import admin
 from .models import *
 
 class PerfilAdmin(admin.ModelAdmin):
-    list_display = ('usuario', 'privilegio', 'dataDenascimento',)
+    list_display = ('usuario', 'privilegio',)
     empty_value_display = 'Vazio'
     search_fields = ('user__username',)
-
-    def dataDenascimento(self, obj):
-        if obj.data_nascimento:
-            return obj.data_nascimento.strftime("%d/%m/%Y")
-    dataDenascimento.empty_value_display = '__/__/____'
 
 
 class OrcamentoAdmin(admin.ModelAdmin):
