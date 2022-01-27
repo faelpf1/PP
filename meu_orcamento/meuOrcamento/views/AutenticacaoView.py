@@ -39,7 +39,7 @@ def login_view(request):
         'link_href': '/register'
     }
 
-    return render(request, template_name='auth.html', context=context)
+    return render(request, template_name='Perfil/autenticacao.html', context=context)
 
 def logout_view(request):
     logout(request)
@@ -81,4 +81,4 @@ def register_view(request):
         'link_text': 'Voltar para tela de login',
         'link_href': '/'
     }
-    return render(request, template_name='auth.html', context=context)
+    return render(request, template_name='Perfil/autenticacao.html', context=context)

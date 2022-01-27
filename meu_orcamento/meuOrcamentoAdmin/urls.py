@@ -21,7 +21,7 @@ from django.conf.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('meuOrcamento.urls.AuthUrls')),
+    path('', include('meuOrcamento.urls.AutenticacaoUrls')),
     path('perfil/', include('meuOrcamento.urls.PerfilUrls')),
     path('orcamento/', include('meuOrcamento.urls.OrcamentoUrls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

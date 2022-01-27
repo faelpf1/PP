@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<div id="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-lg-4 offset-md-4 offset-lg-4" id="profile-area">
+                <h3 class="text-center">{{title}}</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">Usuário: {{user.username | default:"Sem usuário"}}</li>
+                    <li class="list-group-item">E-mail: {{user.email | default:"Sem e-mail"}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

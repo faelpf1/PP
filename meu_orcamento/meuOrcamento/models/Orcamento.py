@@ -8,6 +8,7 @@ class Orcamento(models.Model):
     data = models.DateField() 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    id_user = models.ForeignKey(User, null = True, related_name='idUserO', on_delete= models.SET_NULL)
     
     def __str__(self):
         return '{}'.format(self.nome)

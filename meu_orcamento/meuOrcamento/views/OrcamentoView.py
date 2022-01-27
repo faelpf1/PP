@@ -13,6 +13,7 @@ def orcamento_view(request):
     print(orcamentos)
 
     context = {
+        'orcamento' : orcamentos,
         
     }
 
@@ -23,6 +24,7 @@ def adicionarOrcamento(request):
     message = None
     if request.method == 'POST':
         orcamento = OrcamentoForm(request.POST)
+        orcamento = orcamento + '<tr><td><select name="perfil" class="form-control" required id="id_perfil"><option selected>{{Perfil.user.id}}</option></select></td></tr>'
         if orcamento.is_valid():
             orcamento.save()
             if orcamento is not None:

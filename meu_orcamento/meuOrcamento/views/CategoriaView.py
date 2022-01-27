@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from meuOrcamento.forms.CategoriaForm import CategoriaForm
+from meuOrcamento.models.Categoria import Categoria
 
 
 def adicionarCategoria(request):

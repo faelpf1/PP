@@ -1,4 +1,4 @@
 from .PerfilView import *
 from .OrcamentoView import *
-from .AuthView import *
+from .AutenticacaoView import *
 from .CategoriaView import *
