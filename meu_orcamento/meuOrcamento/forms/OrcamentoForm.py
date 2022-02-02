@@ -12,7 +12,7 @@ class OrcamentoForm(ModelForm):
         fields = ['nome', 'data', 'tipo_orcamento', 'categoria', 'valor']
         widgets = {
             'nome': forms.TextInput( attrs = {'class': "form-control"} ),
-            'data': forms.DateInput( attrs = {'class': "form-control", "type": "date"} ),
+            'data': forms.DateInput( attrs = {'class': "form-control", "type": "date", }, format='%Y-%m-%d'),
             'tipo_orcamento': forms.Select( attrs = {'class': "form-control"} ),
             'categoria': forms.Select( attrs = {'class': "form-control"} ),
             'valor': forms.TextInput( attrs = {'class': "form-control"} ),
