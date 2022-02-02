@@ -36,12 +36,6 @@ class OrcamentoCreateView( PassRequestToFormViewMixin, CreateView ):
     template_name='Orcamento/adicionarOrcamento.html'
     success_url = reverse_lazy('orcamento')
 
-    '''def get(self, request, *args, **kwargs):
-        filtro = Orcamento.objects.filter(categoria__id_user=self.request.user.id)
-        form = self.form_class(initial=self.initial)
-        
-        return render(request, self.template_name, {'form': form})'''
-
     def form_valid(self, form):
         form.instance.categoria__id_user = self.request.user.id
         self.object = form.save(commit=False)
@@ -50,7 +44,7 @@ class OrcamentoCreateView( PassRequestToFormViewMixin, CreateView ):
         return super().form_valid(form)
 
 
-class OrcamentoUpdate(UpdateView):
+class OrcamentoUpdate(PassRequestToFormViewMixin, UpdateView):
     model = Orcamento
     form_class = OrcamentoForm
     template_name = 'Orcamento/editarOrcamento.html'
