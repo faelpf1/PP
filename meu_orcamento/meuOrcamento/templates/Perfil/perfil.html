@@ -6,16 +6,21 @@
 {% block content %}
 <div id="content">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-4 col-lg-4 offset-md-4 offset-lg-4" id="profile-area">
-                <h3 class="text-center">{{title}}</h3>
-                <ul class="list-group">
-                    <li class="list-group-item">Usuário: {{user.username | default:"Sem usuário"}}</li>
-                    <li class="list-group-item">E-mail: {{user.email | default:"Sem e-mail"}}</li>
-                </ul>
+        <h3 class="text-center"> Meu Perfil </h3>
+        <div class="card">
+            <div class="card-header">
+                <h5>{{user.username | default:"Sem usuário"}}</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <ul>E-mail: {{user.email | default:"Sem e-mail"}}</ul>
+                    {% comment %}
+                    <a href={% url 'editarOrcamento' orcamento.id %} class="btn btn-primary btn-card">Editar</a>
+                    <a href={% url 'excluirOrcamento' orcamento.id %} class="btn btn-primary btn-card">Deletar</a>
+                    {% endcomment %}
+                </div>
             </div>
         </div>
     </div>
 </div>
 {% endblock %}
-

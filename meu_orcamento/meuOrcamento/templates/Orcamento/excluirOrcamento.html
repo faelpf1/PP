@@ -9,20 +9,28 @@
 {% block content %}
 <div id="content">
     <div class="container-fluid">
-        <div class="row">
-            <form class="col-md-6 col-lg-6 offset-md-3 offset-lg-3" method="POST">
-                <div class="row">
-                    {% csrf_token %}
-                    <div class=''>
-                        <p>Deseja deletar {{orcamento.nome}}?</p>
-                    </div>
-                    <div class='row'>
-                        <button type="submit" class="btn btn-primary" value=confirm>Sim</button>
-                        <a href="{{'/orcamento'}}"><button type="button" class="btn btn-primary">Não</button></a>
+        <h3 class="text-center"> Deseja excluir? </h3>
+        <form class="col-md-6 col-lg-6 offset-md-3 offset-lg-3" method="POST">
+            {% csrf_token %}
+            <div class="card">
+                <div class="card-header">
+                    <h5>{{orcamento.nome}}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <ul>Valor:R${{orcamento.valor}}</ul>
+                        <ul>Tipo de orcamento: {{orcamento.tipo_orcamento}}</ul>
+                        <ul>Data:{{orcamento.data}}</ul>
+                        <ul>Categoria:{{orcamento.categoria}}</ul>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+            <div style="padding: 2%;">
+                <div style="padding-right: 3%;"><button type="submit" class="btn btn-primary" style="width: 50%;float:left;" value=confirm>Sim</button></div>
+                <div><a href="{{'/orcamento'}}"  style="width: 50%;float:right;"><button type="button" class="btn btn-primary">Não</button></a></div>
+            </div>
+                
+        </form>
     </div>
 </div>
 {% endblock %}
