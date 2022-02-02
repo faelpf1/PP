@@ -4,6 +4,12 @@ from meuOrcamento.forms.CategoriaForm import CategoriaForm
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
+class PassRequestToFormViewMixin:
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
+
 class OrcamentoListView( ListView ):
     model = Orcamento
     template_name='Orcamento/orcamento.html'
@@ -16,6 +22,7 @@ class CategoriaCreateView( CreateView ):
     form_class = CategoriaForm
     template_name='Orcamento/adicionarCategoria.html'
     success_url = reverse_lazy('orcamento')
+
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.id_user = self.request.user
@@ -23,12 +30,20 @@ class CategoriaCreateView( CreateView ):
         return super().form_valid(form)
 
 
-class OrcamentoCreateView( CreateView ):
+class OrcamentoCreateView( PassRequestToFormViewMixin, CreateView ):
     model = Orcamento
     form_class = OrcamentoForm
     template_name='Orcamento/adicionarOrcamento.html'
     success_url = reverse_lazy('orcamento')
+
+    '''def get(self, request, *args, **kwargs):
+        filtro = Orcamento.objects.filter(categoria__id_user=self.request.user.id)
+        form = self.form_class(initial=self.initial)
+        
+        return render(request, self.template_name, {'form': form})'''
+
     def form_valid(self, form):
+        form.instance.categoria__id_user = self.request.user.id
         self.object = form.save(commit=False)
         self.object.id_user = self.request.user
         self.object.save()
