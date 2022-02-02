@@ -11,9 +11,6 @@
         <div class="row">
             <form class="col-md-4 col-lg-4 offset-md-4 offset-lg-4" method="POST" action="">
                 <h3 class="text-center"> Adicionar Orçamento </h3>
-                {% if message is not None %}
-                <div class="alert alert-{{ message.type }}">{{ message.text }}</div>
-                {% endif %}
                 {% csrf_token %}
                     {{ form }}
                 <a href="{{'/orcamento'}}" style="display: block; text-align: center; margin-bottom: 20px;">Voltar</a>
