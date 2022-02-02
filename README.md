@@ -23,7 +23,7 @@ Os métodos serão adicionados abaixo conforme necessidade.
 - [x] Mecanismo de autenticação.
 
 ## Comandos Realizados
-obs: Acesse a pasta meu_orcamento antes.
+obs: Acesse a pasta com cd .\meu_orcamento antes.
 **Ativa o ambiente virtual** .\venv\Scripts\Activate.ps1 #Ativar ambiente python
 
 **Executa a aplicação** py manage.py runserver [ip]

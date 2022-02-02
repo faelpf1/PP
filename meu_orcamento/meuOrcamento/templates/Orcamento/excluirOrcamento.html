@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Excluir Orcamento {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/extra.css' %}">{% endblock %}
+
+{% block content %}
+<div id="content">
+    <div class="container-fluid">
+        <div class="row">
+            <form class="col-md-6 col-lg-6 offset-md-3 offset-lg-3" method="POST">
+                <div class="row">
+                    {% csrf_token %}
+                    <div class=''>
+                        <p>Deseja deletar {{orcamento.nome}}?</p>
+                    </div>
+                    <div class='row'>
+                        <button type="submit" class="btn btn-primary" value=confirm>Sim</button>
+                        <a href="{{'/orcamento'}}"><button type="button" class="btn btn-primary">Não</button></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

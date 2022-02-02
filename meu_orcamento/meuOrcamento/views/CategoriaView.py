@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from meuOrcamento.forms.CategoriaForm import CategoriaForm
 from meuOrcamento.models.Categoria import Categoria
+from django.contrib.auth.models import User
 
 
 def adicionarCategoria(request):
@@ -8,7 +9,9 @@ def adicionarCategoria(request):
     if request.method == 'POST':
         categoria = CategoriaForm(request.POST)
         if categoria.is_valid():
-            categoria.save()
+            obj = categoria.save(commit = False)
+            obj.id_user = request.user
+            obj.save()
             if categoria is not None:
                 message = { 'type': 'success', 'text': 'Categoria adicionada com sucesso!' }
             else:
@@ -25,4 +28,4 @@ def adicionarCategoria(request):
         'link_href': '/orcamento'
     }
     
-    return render(request, 'adicionarCategoria.html', context=context)
+    return render(request, 'Orcamento/adicionarCategoria.html', context=context)

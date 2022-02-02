@@ -1,4 +1,5 @@
 from meuOrcamento.models import *
+from django.urls import reverse
 
 class Orcamento(models.Model):
     categoria = models.ForeignKey(Categoria, null = True, related_name='categoria', on_delete = models.SET_NULL)
@@ -12,3 +13,6 @@ class Orcamento(models.Model):
     
     def __str__(self):
         return '{}'.format(self.nome)
+
+    '''def get_absolute_url(self):
+        return 'orcamento'''
