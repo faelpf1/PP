@@ -1,5 +1,5 @@
 from django.urls import path
-from meuOrcamento.views.OrcamentoView import OrcamentoCreateView, OrcamentoListView, OrcamentoUpdate, OrcamentoDelete, CategoriaCreateView, orcamento_view
+from meuOrcamento.views.OrcamentoView import OrcamentoCreateView, OrcamentoUpdate, OrcamentoDelete, CategoriaCreateView, orcamento_view
 
 urlpatterns=[
     path('', orcamento_view, name='orcamento'),
@@ -8,5 +8,3 @@ urlpatterns=[
     path('editarOrcamento/<int:pk>', OrcamentoUpdate.as_view(), name='editarOrcamento'),
     path('excluirOrcamento/<int:pk>', OrcamentoDelete.as_view(), name='excluirOrcamento'),
 ]
-
-#path('', OrcamentoListView.as_view(), name='orcamento'),

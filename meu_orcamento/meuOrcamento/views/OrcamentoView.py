@@ -13,7 +13,7 @@ class PassRequestToFormView:
         kwargs['request'] = self.request
         return kwargs
 
-class OrcamentoListView( ListView ):
+'''class OrcamentoListView( ListView ):
     model = Orcamento
     template_name='Orcamento/orcamento.html'
     def get_context_data(self, **kwargs):
@@ -51,7 +51,7 @@ class OrcamentoListView( ListView ):
             orcamento = orcamento.filter(data__month=date_month[1],data__year=date_month[0])
 
         
-        return orcamento
+        return orcamento'''
 
 def orcamento_view( request ):
     orcamento = Orcamento.objects.filter(id_user=request.user.id)
