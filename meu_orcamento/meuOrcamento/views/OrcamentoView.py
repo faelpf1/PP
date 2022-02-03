@@ -1,3 +1,4 @@
+from wsgiref.validate import validator
 from django.shortcuts import render
 from meuOrcamento.models import Orcamento, Categoria
 from meuOrcamento.forms.OrcamentoForm import OrcamentoForm
@@ -24,16 +25,68 @@ class OrcamentoListView( ListView ):
             else:
                 data_atual=str(datetime.date.today().year)+"-"+str(datetime.date.today().month)
             return data_atual
+        
+        def receita_e_despesa(self):
+            orcamentos = Orcamento.objects.filter(id_user=self.request.user.id) 
+            receita = 0
+            despesa = 0
+            for orcamento in orcamentos:
+                if orcamento.tipo_orcamento == 1:
+                    receita = receita + orcamento.valor
+                elif orcamento.tipo_orcamento == 2:
+                    despesa = despesa + orcamento.valor
+            orcamento = receita - despesa
+            return receita, despesa, orcamento
+ 
         context['data_atual'] = get_month_year()
+        context['receita'], context['despesa'], context['orcamento'] = receita_e_despesa(self)
         return context
 
+        
     def get_queryset(self):
         orcamento = Orcamento.objects.filter(id_user=self.request.user.id)          
         date_month = self.request.GET.get('date_month')
         if date_month:
             date_month = date_month.split("-", 1)
             orcamento = orcamento.filter(data__month=date_month[1],data__year=date_month[0])
+
+        
         return orcamento
+
+def orcamento_view( request ):
+    orcamento = Orcamento.objects.filter(id_user=request.user.id)
+    date_month = request.GET.get('date_month')
+    if date_month:
+        date_month = date_month.split("-", 1)
+        orcamento = orcamento.filter(data__month=date_month[1],data__year=date_month[0])
+    receita = 0
+    despesa = 0
+    for orcamentos in orcamento:
+        if orcamentos.tipo_orcamento == 1:
+            receita = receita + orcamentos.valor
+        elif orcamentos.tipo_orcamento == 2:
+            despesa = despesa + orcamentos.valor
+        orcamentoValor = receita - despesa
+    
+    def get_month_year():
+            month=datetime.date.today().month
+            if(month<10):
+                data_atual=str(datetime.date.today().year)+"-0"+str(datetime.date.today().month)
+            else:
+                data_atual=str(datetime.date.today().year)+"-"+str(datetime.date.today().month)
+            return data_atual
+
+    context = {
+        'object_list' : orcamento,
+        'receita': receita,
+        'despesa': despesa,
+        'orcamentoValor': orcamentoValor,
+        'data_atual' : get_month_year(),
+    }
+
+    return render( request, template_name='Orcamento/orcamento.html', context = context, status = 200 ) 
+
+    
 
 
 class CategoriaCreateView( CreateView ):

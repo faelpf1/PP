@@ -11,7 +11,6 @@
 {% endblock %}
 
 {% block content %}
-
 <div id="content">
     <h3 class="text-center"> Meu Orçamento </h3>
     <div class="text-center" method="GET"class=form-inline>
@@ -21,6 +20,11 @@
         </form>
     </div>
     <div class="container">
+            Receita = {{receita}}
+            Despesa = {{despesa}}
+            {% if orcamentoValor is not None %}
+                Orcamento = {{orcamentoValor}}
+            {% endif %}
         {% for orcamento in object_list %}
         <div class="card" style="padding: 1%;">
             <div class="card-header">
@@ -40,6 +44,7 @@
         {% endfor %}
 
     </div>
+</div>
     {% endblock %}
 
 
