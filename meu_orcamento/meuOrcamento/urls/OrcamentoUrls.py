@@ -3,6 +3,7 @@ from meuOrcamento.views.OrcamentoView import OrcamentoCreateView, OrcamentoListV
 
 urlpatterns=[
     path('', OrcamentoListView.as_view(), name='orcamento'),
+    
     path('adicionarCategoria/', CategoriaCreateView.as_view(), name='adicionarCategoria'),
     path('adicionarOrcamento/', OrcamentoCreateView.as_view(), name='adicionarOrcamento'),
     path('editarOrcamento/<int:pk>', OrcamentoUpdate.as_view(), name='editarOrcamento'),

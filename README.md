@@ -24,7 +24,7 @@ Os métodos serão adicionados abaixo conforme necessidade.
 - [x] Criação do template das páginas.
 - [x] Mecanismo de autenticação.
 - [x] Mecanismo de registro de usuario.
-- [ ] Filtro por data na tela de orcamentos.
+- [x] Busca por data na tela de orcamentos.
 
 ## Comandos Realizados
 obs: Acesse a pasta com cd .\meu_orcamento antes.

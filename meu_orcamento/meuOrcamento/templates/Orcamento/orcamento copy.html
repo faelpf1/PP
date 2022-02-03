@@ -11,13 +11,12 @@
 {% endblock %}
 
 {% block content %}
-
 <div id="content">
     <h3 class="text-center"> Meu Orçamento </h3>
     <div class="text-center" method="GET"class=form-inline>
         <form action=".">
-            <input type="month" name='date_month' placeholder="dataAtual">
-            <input type="submit" class="btn btn-primary" value=Buscar>
+            <input type="text" id="search" name="search" placeholder="Pesquisa">
+            <input type="submit" class="btn btn-primary" value=Pesquisar>
         </form>
     </div>
     <div class="container">

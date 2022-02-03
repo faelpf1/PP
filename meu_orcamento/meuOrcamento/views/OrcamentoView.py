@@ -1,12 +1,10 @@
+from django.shortcuts import render
 from meuOrcamento.models import Orcamento, Categoria
-from django.core.paginator import Paginator
 from meuOrcamento.forms.OrcamentoForm import OrcamentoForm
 from meuOrcamento.forms.CategoriaForm import CategoriaForm
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 import datetime
-#from meuOrcamento.filters.OrcamentoFilter import OrcamentoFilter
-from django_filters.views import FilterView
 
 class PassRequestToFormView:
     def get_form_kwargs(self):
@@ -15,18 +13,16 @@ class PassRequestToFormView:
         return kwargs
 
 class OrcamentoListView( ListView ):
-    months = ['zero','January','February','March','April','May','June','July','August','September','October','November','December']
-    print(str(months[datetime.date.today().month])+" "+str(datetime.date.today().year))
+    #print(str(months[datetime.date.today().month])+" "+str(datetime.date.today().year))
     model = Orcamento
     template_name='Orcamento/orcamento.html'
     def get_queryset(self):
-        return Orcamento.objects.filter(id_user=self.request.user.id)
-
-class FiltroFilterView( FilterView ):
-    model = Orcamento
-    template_name = ''
-    
-
+        orcamento = Orcamento.objects.filter(id_user=self.request.user.id)
+        date_month = self.request.GET.get('date_month')
+        if date_month:
+            date_month = date_month.split("-", 1)
+            orcamento = orcamento.filter(data__month=date_month[1],data__year=date_month[0])
+        return orcamento
 
 
 class CategoriaCreateView( CreateView ):
