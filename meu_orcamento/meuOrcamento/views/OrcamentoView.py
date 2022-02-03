@@ -1,20 +1,32 @@
 from meuOrcamento.models import Orcamento, Categoria
+from django.core.paginator import Paginator
 from meuOrcamento.forms.OrcamentoForm import OrcamentoForm
 from meuOrcamento.forms.CategoriaForm import CategoriaForm
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+import datetime
+#from meuOrcamento.filters.OrcamentoFilter import OrcamentoFilter
+from django_filters.views import FilterView
 
-class PassRequestToFormViewMixin:
+class PassRequestToFormView:
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs['request'] = self.request
         return kwargs
 
 class OrcamentoListView( ListView ):
+    months = ['zero','January','February','March','April','May','June','July','August','September','October','November','December']
+    print(str(months[datetime.date.today().month])+" "+str(datetime.date.today().year))
     model = Orcamento
     template_name='Orcamento/orcamento.html'
     def get_queryset(self):
         return Orcamento.objects.filter(id_user=self.request.user.id)
+
+class FiltroFilterView( FilterView ):
+    model = Orcamento
+    template_name = ''
+    
+
 
 
 class CategoriaCreateView( CreateView ):
@@ -30,7 +42,7 @@ class CategoriaCreateView( CreateView ):
         return super().form_valid(form)
 
 
-class OrcamentoCreateView( PassRequestToFormViewMixin, CreateView ):
+class OrcamentoCreateView( PassRequestToFormView, CreateView ):
     model = Orcamento
     form_class = OrcamentoForm
     template_name='Orcamento/adicionarOrcamento.html'
@@ -44,7 +56,7 @@ class OrcamentoCreateView( PassRequestToFormViewMixin, CreateView ):
         return super().form_valid(form)
 
 
-class OrcamentoUpdate(PassRequestToFormViewMixin, UpdateView):
+class OrcamentoUpdate(PassRequestToFormView, UpdateView):
     model = Orcamento
     form_class = OrcamentoForm
     template_name = 'Orcamento/editarOrcamento.html'

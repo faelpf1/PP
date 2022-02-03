@@ -17,10 +17,14 @@ Os métodos serão adicionados abaixo conforme necessidade.
 ## Atividades a serem desenvolvidas
 - [x] Criação do banco de dados com as entidades e seus atributos.
 - [x] Preparação do ambiente python com o Django.
-- [x] Criação de módulos MVC para interação com o banco de dados.
-- [ ] Criação de módulos para mostrar os dados necessarios para o usuário.
-- [ ] Criação do layout da pagina
+- [x] Criação da models Orcamento e Categoria.
+- [x] Criação das views visualizar, adicionar, editar, deletar Orcamento.
+- [x] Criação das views adicionar Categoria.
+- [x] Criação das views visualizar perfil.
+- [x] Criação do template das páginas.
 - [x] Mecanismo de autenticação.
+- [x] Mecanismo de registro de usuario.
+- [ ] Filtro por data na tela de orcamentos.
 
 ## Comandos Realizados
 obs: Acesse a pasta com cd .\meu_orcamento antes.
