@@ -13,11 +13,22 @@ class PassRequestToFormView:
         return kwargs
 
 class OrcamentoListView( ListView ):
-    #print(str(months[datetime.date.today().month])+" "+str(datetime.date.today().year))
     model = Orcamento
     template_name='Orcamento/orcamento.html'
+    def get_context_data(self, **kwargs):
+        context = super(OrcamentoListView, self).get_context_data(**kwargs)
+        def get_month_year():
+            month=datetime.date.today().month
+            if(month<10):
+                data_atual=str(datetime.date.today().year)+"-0"+str(datetime.date.today().month)
+            else:
+                data_atual=str(datetime.date.today().year)+"-"+str(datetime.date.today().month)
+            return data_atual
+        context['data_atual'] = get_month_year()
+        return context
+
     def get_queryset(self):
-        orcamento = Orcamento.objects.filter(id_user=self.request.user.id)
+        orcamento = Orcamento.objects.filter(id_user=self.request.user.id)          
         date_month = self.request.GET.get('date_month')
         if date_month:
             date_month = date_month.split("-", 1)
