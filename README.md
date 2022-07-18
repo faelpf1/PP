@@ -25,6 +25,7 @@ Os métodos serão adicionados abaixo conforme necessidade.
 - [x] Mecanismo de autenticação.
 - [x] Mecanismo de registro de usuario.
 - [x] Busca por data na tela de orcamentos.
+- [ ] Front-End
 
 ## Comandos Realizados
 obs: Acesse a pasta com cd .\meu_orcamento antes.
